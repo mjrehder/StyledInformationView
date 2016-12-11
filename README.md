@@ -10,6 +10,7 @@ From the example project, which results in the screenshot shown above:
 ```swift
 import UIKit
 import MJRFlexStyleComponents
+import StyledInformationView
 
 class ViewController: UIViewController {
     @IBOutlet weak var infoView: StyledInformationView!
