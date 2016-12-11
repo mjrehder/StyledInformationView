@@ -5,7 +5,7 @@ StyledInformationView is a UIView for displaying a header, a menu and a detailed
 
 # Usage
 
-From the example project, which results in the screenshot show above:
+From the example project, which results in the screenshot shown above:
 
 ```swift
 import UIKit
