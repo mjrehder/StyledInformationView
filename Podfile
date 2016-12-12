@@ -1,13 +1,13 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'StyledInformationView' do
   use_frameworks!
-  pod 'MJRFlexStyleComponents', '1.8.8'
-  pod 'StyledOverlay', :git => 'https://github.com/Rehsco/StyledOverlay.git', :tag => '1.2.2'
+  pod 'MJRFlexStyleComponents'
+  pod 'StyledOverlay'
 end
 
 target 'StyledInfoDemo' do
     use_frameworks!
-    pod 'MJRFlexStyleComponents', '1.8.8'
-    pod 'StyledOverlay', :git => 'https://github.com/Rehsco/StyledOverlay.git', :tag => '1.2.2'
+    pod 'MJRFlexStyleComponents'
+    pod 'StyledOverlay'
 end

@@ -37,43 +37,43 @@ public enum StyledInformationMenuAlignment {
     case right(maxWidth: CGFloat)
 }
 
-public class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
-    private var menu = FlexMenu(frame: CGRectMake(0,0,10,10))
-    public var upperLabel = FlexTextView()
-    public var lowerText = FlexTextView()
+open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
+    fileprivate var menu = FlexMenu(frame: CGRect(x: 0,y: 0,width: 10,height: 10))
+    open var upperLabel = FlexTextView()
+    open var lowerText = FlexTextView()
     
-    public var menuItems: [StyledInformationMenuItem]? {
+    open var menuItems: [StyledInformationMenuItem]? {
         didSet {
             self.menu.menuDataSource = self
             self.menu.setNeedsLayout()
         }
     }
     
-    public var menuAlignment: StyledInformationMenuAlignment = .center(maxWidth: CGFloat.infinity) {
+    open var menuAlignment: StyledInformationMenuAlignment = .center(maxWidth: CGFloat.infinity) {
         didSet {
             self.layoutMenu()
         }
     }
 
-    public var headerText: NSAttributedString? = nil {
+    open var headerText: NSAttributedString? = nil {
         didSet {
             self.updateHeaderLabel()
         }
     }
 
-    public var headerTextAlignment: NSTextAlignment = .Center {
+    open var headerTextAlignment: NSTextAlignment = .center {
         didSet {
             self.updateHeaderLabel()
         }
     }
 
-    public var detailText: NSAttributedString? = nil {
+    open var detailText: NSAttributedString? = nil {
         didSet {
             self.updateTextView()
         }
     }
     
-    public var detailTextAlignment: NSTextAlignment = .Center {
+    open var detailTextAlignment: NSTextAlignment = .center {
         didSet {
             self.updateTextView()
         }
@@ -94,16 +94,16 @@ public class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
         self.centerView.addSubview(self.menu)
         self.lowerView.addSubview(self.lowerText)
         
-        self.lowerText.textView.textAlignment = .Center
+        self.lowerText.textView.textAlignment = .center
         self.prepareTextView(self.lowerText.textView)
-        self.lowerText.styleColor = .clearColor()
+        self.lowerText.styleColor = .clear
 
-        self.upperLabel.textView.textAlignment = .Center
+        self.upperLabel.textView.textAlignment = .center
         self.prepareTextView(self.upperLabel.textView)
-        self.upperLabel.styleColor = .clearColor()
+        self.upperLabel.styleColor = .clear
 
         self.menu.menuInterItemSpacing = 10
-        self.menu.menuStyle = .EquallySpaces(thumbPos: .Top)
+        self.menu.menuStyle = .equallySpaces(thumbPos: .top)
 
         self.updateHeaderLabel()
         
@@ -112,74 +112,74 @@ public class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
         self.lowerViewWeight = 65
     }
     
-    public override func layoutViews() {
+    open override func layoutViews() {
         super.layoutViews()
         self.upperLabel.frame = self.upperView.bounds
         self.lowerText.frame = self.lowerView.bounds
         self.layoutMenu()
     }
 
-    private func prepareTextView(textView: UITextView) {
-        textView.editable = false
-        textView.selectable = false
-        textView.userInteractionEnabled = false
-        textView.dataDetectorTypes = .None
+    fileprivate func prepareTextView(_ textView: UITextView) {
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.isUserInteractionEnabled = false
+        textView.dataDetectorTypes = UIDataDetectorTypes()
         textView.showsHorizontalScrollIndicator = false
         textView.showsVerticalScrollIndicator = false
-        textView.scrollEnabled = false
-        textView.contentInset = UIEdgeInsetsZero
-        textView.scrollIndicatorInsets = UIEdgeInsetsZero
-        textView.contentOffset = CGPointZero
-        textView.textContainerInset = UIEdgeInsetsZero
+        textView.isScrollEnabled = false
+        textView.contentInset = UIEdgeInsets.zero
+        textView.scrollIndicatorInsets = UIEdgeInsets.zero
+        textView.contentOffset = CGPoint.zero
+        textView.textContainerInset = UIEdgeInsets.zero
         textView.textContainer.lineFragmentPadding = 0
-        textView.backgroundColor = .clearColor()
+        textView.backgroundColor = .clear
     }
     
-    private func layoutMenu() {
+    fileprivate func layoutMenu() {
         var bounds = self.centerView.bounds
         switch self.menuAlignment {
         case .center(let maxWidth):
             if maxWidth.isFinite {
-                bounds = CGRectMake(bounds.origin.x + (bounds.size.width - maxWidth) * 0.5, bounds.origin.y, maxWidth, bounds.size.height)
+                bounds = CGRect(x: bounds.origin.x + (bounds.size.width - maxWidth) * 0.5, y: bounds.origin.y, width: maxWidth, height: bounds.size.height)
             }
         case .left(let maxWidth):
             if maxWidth.isFinite {
-                bounds = CGRectMake(bounds.origin.x, bounds.origin.y, maxWidth, bounds.size.height)
+                bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: maxWidth, height: bounds.size.height)
             }
         case .right(let maxWidth):
             if maxWidth.isFinite {
-                bounds = CGRectMake(bounds.origin.x + (bounds.size.width - maxWidth), bounds.origin.y, maxWidth, bounds.size.height)
+                bounds = CGRect(x: bounds.origin.x + (bounds.size.width - maxWidth), y: bounds.origin.y, width: maxWidth, height: bounds.size.height)
             }
         }
         self.menu.frame = bounds
     }
     
-    private func updateHeaderLabel() {
+    fileprivate func updateHeaderLabel() {
         self.upperLabel.textView.attributedText = headerText
         self.upperLabel.textView.textAlignment = self.headerTextAlignment
     }
     
-    private func updateTextView() {
+    fileprivate func updateTextView() {
         self.lowerText.textView.attributedText = self.detailText
         self.lowerText.textView.textAlignment = self.detailTextAlignment
     }
     
     // MARK: - FlexMenuDataSource
     
-    public func menuItemSelected(menu: FlexMenu, index: Int) {
+    open func menuItemSelected(_ menu: FlexMenu, index: Int) {
         if let mi = self.menuItemForIndex(menu, index: index) as? StyledInformationMenuItem {
             mi.selectionHandler?()
         }
     }
     
-    public func menuItemForIndex(menu: FlexMenu, index: Int) -> FlexMenuItem {
+    open func menuItemForIndex(_ menu: FlexMenu, index: Int) -> FlexMenuItem {
         if let mi = self.menuItems {
             return mi[index]
         }
-        return FlexMenuItem(title: "", titleShortcut: "", color: .clearColor(), thumbColor: .clearColor())
+        return FlexMenuItem(title: "", titleShortcut: "", color: .clear, thumbColor: .clear)
     }
     
-    public func numberOfMenuItems(menu: FlexMenu) -> Int {
+    open func numberOfMenuItems(_ menu: FlexMenu) -> Int {
         if let mi = self.menuItems {
             return mi.count
         }

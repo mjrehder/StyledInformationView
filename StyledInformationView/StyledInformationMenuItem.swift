@@ -30,6 +30,6 @@
 import UIKit
 import MJRFlexStyleComponents
 
-public class StyledInformationMenuItem: FlexMenuItem {
-    public var selectionHandler: ((Void) -> Void)?
+open class StyledInformationMenuItem: FlexMenuItem {
+    open var selectionHandler: ((Void) -> Void)?
 }
