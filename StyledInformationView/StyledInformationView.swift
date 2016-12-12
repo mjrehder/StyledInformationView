@@ -28,7 +28,6 @@
  */
 
 import UIKit
-import StyledLabel
 import StyledOverlay
 import MJRFlexStyleComponents
 
@@ -40,7 +39,7 @@ public enum StyledInformationMenuAlignment {
 
 public class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
     private var menu = FlexMenu(frame: CGRectMake(0,0,10,10))
-    public var upperLabel = FlexLabel()
+    public var upperLabel = FlexTextView()
     public var lowerText = FlexTextView()
     
     public var menuItems: [StyledInformationMenuItem]? {
@@ -98,7 +97,11 @@ public class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
         self.lowerText.textView.textAlignment = .Center
         self.prepareTextView(self.lowerText.textView)
         self.lowerText.styleColor = .clearColor()
-        
+
+        self.upperLabel.textView.textAlignment = .Center
+        self.prepareTextView(self.upperLabel.textView)
+        self.upperLabel.styleColor = .clearColor()
+
         self.menu.menuInterItemSpacing = 10
         self.menu.menuStyle = .EquallySpaces(thumbPos: .Top)
 
@@ -152,8 +155,8 @@ public class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
     }
     
     private func updateHeaderLabel() {
-        self.upperLabel.label.attributedText = headerText
-        self.upperLabel.labelTextAlignment = self.headerTextAlignment
+        self.upperLabel.textView.attributedText = headerText
+        self.upperLabel.textView.textAlignment = self.headerTextAlignment
     }
     
     private func updateTextView() {
