@@ -18,8 +18,6 @@
 		5B28399B1DFD7E710028D107 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28399A1DFD7E710028D107 /* UIImageExtension.swift */; };
 		5B2839A11DFD809B0028D107 /* StyledInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2839A01DFD809B0028D107 /* StyledInformationView.swift */; };
 		5B2839A21DFD809B0028D107 /* StyledInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2839A01DFD809B0028D107 /* StyledInformationView.swift */; };
-		5B2839A41DFDA58B0028D107 /* StyledInformationMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2839A31DFDA58B0028D107 /* StyledInformationMenuItem.swift */; };
-		5B2839A51DFDA58B0028D107 /* StyledInformationMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2839A31DFDA58B0028D107 /* StyledInformationMenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +34,6 @@
 		5B2839951DFD7C380028D107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B28399A1DFD7E710028D107 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		5B2839A01DFD809B0028D107 /* StyledInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledInformationView.swift; sourceTree = "<group>"; };
-		5B2839A31DFDA58B0028D107 /* StyledInformationMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledInformationMenuItem.swift; sourceTree = "<group>"; };
 		815896C953F408CA2B542C5F /* Pods_StyledInformationView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StyledInformationView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CEDDD8EE0C4082B10CE745 /* Pods-StyledInfoDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyledInfoDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyledInfoDemo/Pods-StyledInfoDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B56313902F78CE0A9BE0753E /* Pods-StyledInformationView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyledInformationView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StyledInformationView/Pods-StyledInformationView.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				5B2839A01DFD809B0028D107 /* StyledInformationView.swift */,
-				5B2839A31DFDA58B0028D107 /* StyledInformationMenuItem.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -343,7 +339,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B2839A41DFDA58B0028D107 /* StyledInformationMenuItem.swift in Sources */,
 				5B2839A11DFD809B0028D107 /* StyledInformationView.swift in Sources */,
 				5B28399B1DFD7E710028D107 /* UIImageExtension.swift in Sources */,
 			);
@@ -354,7 +349,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B28398C1DFD7C380028D107 /* ViewController.swift in Sources */,
-				5B2839A51DFDA58B0028D107 /* StyledInformationMenuItem.swift in Sources */,
 				5B2839A21DFD809B0028D107 /* StyledInformationView.swift in Sources */,
 				5B28398A1DFD7C380028D107 /* AppDelegate.swift in Sources */,
 			);

@@ -42,7 +42,7 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
     open var upperLabel = FlexTextView()
     open var lowerText = FlexTextView()
     
-    open var menuItems: [StyledInformationMenuItem]? {
+    open var menuItems: [FlexMenuItem]? {
         didSet {
             self.menu.menuDataSource = self
             self.menu.setNeedsLayout()
@@ -167,9 +167,7 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
     // MARK: - FlexMenuDataSource
     
     open func menuItemSelected(_ menu: FlexMenu, index: Int) {
-        if let mi = self.menuItemForIndex(menu, index: index) as? StyledInformationMenuItem {
-            mi.selectionHandler?()
-        }
+        self.menuItemForIndex(menu, index: index).selectionHandler?()
     }
     
     open func menuItemForIndex(_ menu: FlexMenu, index: Int) -> FlexMenuItem {

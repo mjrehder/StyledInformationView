@@ -19,12 +19,12 @@ class ViewController: UIViewController {
         self.infoView.headerText = NSAttributedString(string: "Information Header")
 
         let aIcon = UIImage(named: "plus_36pt")
-        let ami = StyledInformationMenuItem(title: "", titleShortcut: "", color: .clear, thumbColor: .clear, thumbIcon: aIcon)
+        let ami = FlexMenuItem(title: "", titleShortcut: "", color: .clear, thumbColor: .clear, thumbIcon: aIcon)
         ami.selectionHandler = {
             NSLog("Plus selected")
         }
         let sIcon = UIImage(named: "search_36pt")
-        let smi = StyledInformationMenuItem(title: "", titleShortcut: "", color: .clear, thumbColor: .clear, thumbIcon: sIcon)
+        let smi = FlexMenuItem(title: "", titleShortcut: "", color: .clear, thumbColor: .clear, thumbIcon: sIcon)
         smi.selectionHandler = {
             NSLog("Search selected")
         }
