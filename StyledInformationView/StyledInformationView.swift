@@ -37,14 +37,14 @@ public enum StyledInformationMenuAlignment {
     case right(maxWidth: CGFloat)
 }
 
-open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
+open class StyledInformationView: StyledBase3Overlay {
     fileprivate var menu = FlexMenu(frame: CGRect(x: 0,y: 0,width: 10,height: 10))
     open var upperLabel = FlexTextView()
     open var lowerText = FlexTextView()
     
     open var menuItems: [FlexMenuItem]? {
         didSet {
-            self.menu.menuDataSource = self
+            self.menu.menuItems = self.menuItems
             self.menu.setNeedsLayout()
         }
     }
@@ -54,19 +54,19 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
             self.layoutMenu()
         }
     }
-
+    
     open var headerText: NSAttributedString? = nil {
         didSet {
             self.updateHeaderLabel()
         }
     }
-
+    
     open var headerTextAlignment: NSTextAlignment = .center {
         didSet {
             self.updateHeaderLabel()
         }
     }
-
+    
     open var detailText: NSAttributedString? = nil {
         didSet {
             self.updateTextView()
@@ -78,7 +78,7 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
             self.updateTextView()
         }
     }
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.initInformationView()
@@ -88,7 +88,7 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
         super.init(coder: aDecoder)
         self.initInformationView()
     }
-
+    
     func initInformationView() {
         self.upperView.addSubview(self.upperLabel)
         self.centerView.addSubview(self.menu)
@@ -97,14 +97,14 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
         self.lowerText.textView.textAlignment = .center
         self.prepareTextView(self.lowerText.textView)
         self.lowerText.styleColor = .clear
-
+        
         self.upperLabel.textView.textAlignment = .center
         self.prepareTextView(self.upperLabel.textView)
         self.upperLabel.styleColor = .clear
-
+        
         self.menu.menuInterItemSpacing = 10
         self.menu.menuStyle = .equallySpaces(thumbPos: .top)
-
+        
         self.updateHeaderLabel()
         
         self.upperViewWeight = 10
@@ -118,7 +118,7 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
         self.lowerText.frame = self.lowerView.bounds
         self.layoutMenu()
     }
-
+    
     fileprivate func prepareTextView(_ textView: UITextView) {
         textView.isEditable = false
         textView.isSelectable = false
@@ -162,25 +162,5 @@ open class StyledInformationView: StyledBase3Overlay, FlexMenuDataSource {
     fileprivate func updateTextView() {
         self.lowerText.textView.attributedText = self.detailText
         self.lowerText.textView.textAlignment = self.detailTextAlignment
-    }
-    
-    // MARK: - FlexMenuDataSource
-    
-    open func menuItemSelected(_ menu: FlexMenu, index: Int) {
-        self.menuItemForIndex(menu, index: index).selectionHandler?()
-    }
-    
-    open func menuItemForIndex(_ menu: FlexMenu, index: Int) -> FlexMenuItem {
-        if let mi = self.menuItems {
-            return mi[index]
-        }
-        return FlexMenuItem(title: "", titleShortcut: "", color: .clear, thumbColor: .clear)
-    }
-    
-    open func numberOfMenuItems(_ menu: FlexMenu) -> Int {
-        if let mi = self.menuItems {
-            return mi.count
-        }
-        return 0
     }
 }

@@ -1,13 +1,11 @@
 platform :ios, '10.0'
 
+use_frameworks!
+pod 'MJRFlexStyleComponents'
+pod 'StyledOverlay'
+
 target 'StyledInformationView' do
-  use_frameworks!
-  pod 'MJRFlexStyleComponents'
-  pod 'StyledOverlay'
 end
 
 target 'StyledInfoDemo' do
-    use_frameworks!
-    pod 'MJRFlexStyleComponents'
-    pod 'StyledOverlay'
 end
