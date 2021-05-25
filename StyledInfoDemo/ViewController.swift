@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MJRFlexStyleComponents
+import FlexMenu
 
 class ViewController: UIViewController {
 

@@ -29,7 +29,8 @@
 
 import UIKit
 import StyledOverlay
-import MJRFlexStyleComponents
+import FlexViews
+import FlexMenu
 
 public enum StyledInformationMenuAlignment {
     case center(maxWidth: CGFloat)
